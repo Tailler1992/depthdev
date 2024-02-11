@@ -1,0 +1,142 @@
+.task {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    list-style-type: none;
+    border: 1px solid rgb(54, 56, 75);
+    background-color: rgb(32, 33, 46);
+    border-radius: 6px;
+
+    transition-duration: 0.1s;
+    // cursor: pointer;
+    transition-property: background-color;
+
+    &:hover {
+        background-color: rgb(36, 39, 53);
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 12px 15px;
+}
+
+.header_wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.text {
+    display: flex;
+    flex: initial;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.priority {
+    font-style: normal;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(156, 158, 172);
+    line-height: normal;
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+
+.title {
+    font-style: normal;
+    text-align: left;
+    color: rgb(254, 255, 254);
+    line-height: normal;
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.header {
+    display: flex;
+}
+
+.status {
+    border-radius: 4px;
+    height: 22px;
+    padding: 3px;
+    max-width: 112px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid rgb(60, 63, 81);
+    background-color: rgb(32, 33, 46);
+    transition-property: border, color, background-color;
+    transition-duration: 0.15s;
+
+    margin-top: 10px;
+
+    min-width: 60px;
+
+    font-style: normal;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    font-size: 0.6875rem;
+    font-weight: normal;
+    color: rgb(156, 158, 172);
+    width: fit-content;
+    justify-content: center;
+
+    &:hover {
+        background-color: rgb(42, 44, 59);
+        border: 1px solid rgb(60, 63, 81);
+        color: rgb(254, 255, 254);
+    }
+}
+
+
+.btn_drag {
+    margin-left: auto;
+
+    border-radius: 4px;
+    height: 22px;
+    padding: 3px;
+    max-width: 112px;
+    min-width: auto;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid rgb(60, 63, 81);
+    background-color: rgb(32, 33, 46);
+    transition-property: border, color, background-color;
+    transition-duration: 0.15s;
+    cursor: grab;
+    outline: none;
+}
+
+.btn_drag svg path {
+    fill: #9c9eac;
+}
+
+.btn_drag:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.btn_drag:hover {
+    background-color: rgb(42, 44, 59);
+    border: 1px solid rgb(60, 63, 81);
+    color: rgb(254, 255, 254);
+}
