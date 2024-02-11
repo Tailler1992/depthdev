@@ -1,0 +1,46 @@
+.title {
+    font-style: normal;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgb(238, 239, 252);
+    line-height: normal;
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.count {
+    font-style: normal;
+    text-align: right;
+    color: rgb(133, 134, 153);
+    line-height: normal;
+    font-size: 0.8125rem;
+    font-weight: normal;
+}
+
+
+.header {
+    display: flex;
+    flex-shrink: initial;
+    flex-basis: initial;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    gap: 12px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 300px;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
