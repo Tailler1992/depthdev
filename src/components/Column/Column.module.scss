@@ -8,6 +8,7 @@
     line-height: normal;
     font-size: 0.8125rem;
     font-weight: 500;
+    margin-left: 4px;
 }
 
 .count {
@@ -26,10 +27,10 @@
     flex-basis: initial;
     flex-direction: row;
     -webkit-box-align: center;
-    align-items: center;
     -webkit-box-flex: 1;
-    flex-grow: 1;
     gap: 12px;
+    min-height: 22px;
+    margin-top: 4px;
 }
 
 .column {
@@ -37,10 +38,125 @@
     flex-direction: column;
     gap: 14px;
     min-width: 300px;
+    background-color: rgb(29 30 43);
+    padding: 8px;
+    border-radius: 8px;
+
+    &:hover {
+        .btn_drag {
+            display: flex;
+        }
+
+        .btn_new_issue {
+            opacity: 1;
+            user-select: auto;
+            pointer-events: all;
+
+        }
+    }
+}
+
+.column_todo {
+    .btn_new_issue {
+        // display: inline-flex;
+        opacity: 1;
+        user-select: auto;
+        pointer-events: all;
+    }
 }
 
 .tasks {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.btn_new_issue {
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin: 0px;
+    border-radius: 4px;
+    font-weight: 500;
+    line-height: normal;
+    transition-property: border, background-color, color;
+    transition-duration: .15s;
+    user-select: none;
+    position: relative;
+    border: 1px solid rgb(49, 50, 72);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+    background-color: rgb(39, 41, 57);
+    color: rgb(210, 211, 224);
+    min-width: 28px;
+    height: 28px;
+    padding: 0px 14px;
+    // font-size: 0.8125rem;
+    display: inline-flex;
+
+
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+
+    &:hover {
+        background-color: rgb(43, 44, 68);
+        border-color: rgb(62, 62, 74);
+    }
+}
+
+.btn_new_issue svg {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    max-width: 18px;
+    max-height: 18px;
+    margin-right: 10px;
+    transition-property: fill, stroke;
+    transition-duration: 0.15s;
+    fill: currentcolor;
+}
+
+.btn_drag {
+    margin-left: auto;
+
+    border-radius: 4px;
+    height: 22px;
+    padding: 3px;
+    max-width: 112px;
+    min-width: auto;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: none;
+    background-color: transparent;
+    // border: 1px solid rgb(60, 63, 81);
+    // background-color: rgb(32, 33, 46);
+    transition-property: border, color, background-color;
+    transition-duration: 0.15s;
+    cursor: grab;
+    outline: none;
+
+    display: none;
+}
+
+.btn_drag svg path {
+    fill: #9c9eac;
+}
+
+.btn_drag:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.btn_drag:hover {
+    // background-color: rgb(42, 44, 59);
+    // border: 1px solid rgb(60, 63, 81);
+    color: rgb(254, 255, 254);
 }
