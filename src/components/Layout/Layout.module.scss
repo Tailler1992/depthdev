@@ -1,8 +1,13 @@
 .layout {
+    height: 100vh;
+    display: flex;
+}
+
+.wrapper {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
     gap: 20px;
     padding: 20px;
 }

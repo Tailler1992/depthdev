@@ -11,54 +11,54 @@ import s from './Board.module.scss';
 const initialColumns: IColumn[] = [
     {
         id: 'todo',
-        title: 'Backlog',
+        title: 'В разработке',
     },
     {
         id: 'doing',
-        title: 'Todo',
+        title: 'Сделать',
     },
     {
         id: 'review',
-        title: 'In Progress',
+        title: 'В процессе',
     },
     {
         id: 'done',
-        title: 'Done',
+        title: 'Сделано',
     },
 ];
 const initialTasks: ITask[] = [
     {
         id: '1',
         columnId: 'todo',
-        title: 'Task 1',
+        title: 'Задача 1',
         status: 'todo',
         priority: 'high',
     },
     {
         id: '2',
         columnId: 'todo',
-        title: 'Task 2',
+        title: 'Задача 2',
         status: 'todo',
         priority: 'high',
     },
     {
         id: '3',
         columnId: 'doing',
-        title: 'Task 3',
+        title: 'Задача 3',
         status: 'todo',
         priority: 'normal',
     },
     {
         id: '4',
         columnId: 'doing',
-        title: 'Task 4',
+        title: 'Задача 4',
         status: 'todo',
         priority: 'low',
     },
     {
         id: '5',
         columnId: 'doing',
-        title: 'Task 5',
+        title: 'Задача 5',
         status: 'todo',
         priority: 'low',
     },

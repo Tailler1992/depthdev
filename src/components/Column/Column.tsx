@@ -1,8 +1,10 @@
-import { useMemo } from 'react';
+import { useMemo, useState, KeyboardEvent, ChangeEvent } from 'react';
 import { SortableContext, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 import Task from '../Task/Task';
+
+import useClickOutside from '../../hooks/useClickOutside';
 
 import { IColumn, ITask } from '../../types/types';
 
@@ -14,6 +16,15 @@ interface ColumnProps {
 }
 
 const Column = ({ column, tasks }: ColumnProps) => {
+    const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [newTaskValue, setNewTaskValue] = useState<string>('');
+    const { setWrapperRef } = useClickOutside({
+        clickOutsideFn: () => {
+            setIsEditing(false)
+            setNewTaskValue('');
+        },
+    });
+
     const tasksIds = useMemo(() => {
         return tasks.map((task) => task.id);
     }, [tasks]);
@@ -31,10 +42,27 @@ const Column = ({ column, tasks }: ColumnProps) => {
         transform: CSS.Transform.toString(transform),
     };
 
+    const keyDownHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (event.key === 'Enter') {
+            // ...
+
+            setIsEditing(false);
+            setNewTaskValue('');
+        }
+    }
+
+    const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setNewTaskValue(event.target.value);
+    }
+
     return (
         <SortableContext items={tasksIds}>
-            <div style={style} ref={setNodeRef} className={`${s.column} ${s[`column_${column.id}`]}`}>
-                <div className={s.header} >
+            <div
+                style={style}
+                ref={setNodeRef}
+                className={`${s.column} ${s[`column_${column.id}`]}`}
+            >
+                <div className={s.header}>
                     <h2 className={s.title}>{column.title}</h2>
                     <span className={s.count}>{tasks.length}</span>
                     <button className={s.btn_drag} {...attributes} {...listeners}>
@@ -48,16 +76,28 @@ const Column = ({ column, tasks }: ColumnProps) => {
                         <Task key={task.id} task={task} />
                     ))}
                 </div>
-                <button className={s.btn_new_issue}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" role="presentation">
-                        <path
-                            d="M13 11V3.993A.997.997 0 0012 3c-.556 0-1 .445-1 .993V11H3.993A.997.997 0 003 12c0 .557.445 1 .993 1H11v7.007c0 .548.448.993 1 .993.556 0 1-.445 1-.993V13h7.007A.997.997 0 0021 12c0-.556-.445-1-.993-1H13z"
-                            fill="currentColor"
-                            fillRule="evenodd"
-                        ></path>
-                    </svg>
-                    Create a new issue
-                </button>
+
+                {isEditing ? (
+                    <textarea
+                        ref={setWrapperRef}
+                        onKeyDown={keyDownHandler}
+                        value={newTaskValue}
+                        onChange={changeHandler}
+                        className={s.task}
+                        placeholder="Введите новую задачу"
+                    />
+                ) : (
+                    <button onClick={() => setIsEditing(true)} className={s.btn_new_issue}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" role="presentation">
+                            <path
+                                d="M13 11V3.993A.997.997 0 0012 3c-.556 0-1 .445-1 .993V11H3.993A.997.997 0 003 12c0 .557.445 1 .993 1H11v7.007c0 .548.448.993 1 .993.556 0 1-.445 1-.993V13h7.007A.997.997 0 0021 12c0-.556-.445-1-.993-1H13z"
+                                fill="currentColor"
+                                fillRule="evenodd"
+                            ></path>
+                        </svg>
+                        Создать новую заадчу
+                    </button>
+                )}
             </div>
         </SortableContext>
     );
